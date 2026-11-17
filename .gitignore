@@ -1,0 +1,21 @@
+# macOS Finder & metadata files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux / BSD desktop thumbnails
+.directory
+*~
+
+# Editor swap, backup, and project files
+*.swp
+*.swo
+*.bak
+*.tmp
+.vscode/
+.idea/
+
+# Local test archives or logs
+*.tar.gz
+*.log
