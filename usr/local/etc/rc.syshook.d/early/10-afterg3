@@ -1,0 +1,15 @@
+#!/bin/sh
+pciconf_cmd=$(command -v pciconf) || exit 1
+raw=$("$pciconf_cmd" -r -b pci0:31:0 0xa4) || exit 1
+old=$(printf '%s' "$raw" | tr -d '[:space:]')
+
+case "$old" in
+    [0-9a-fA-F][0-9a-fA-F]) ;;
+    *) logger -t afterg3 "Unexpected GEN_PMCON_3 value: $old"; exit 1 ;;
+esac
+
+new=$(printf '%02x' "$((0x$old & 0xfe))") || exit 1
+if [ "$new" != "$old" ]; then
+    "$pciconf_cmd" -w -b pci0:31:0 0xa4 "0x$new" || exit 1
+fi
+logger -t afterg3 "GEN_PMCON_3 byte $old -> $new"
