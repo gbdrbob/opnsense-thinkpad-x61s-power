@@ -32,7 +32,7 @@ The stock ThinkPad X61/X61s BIOS lacks a "Power On with AC Attach" option. When 
 On your OPNsense machine (as `root`), fetch and extract the repository using FreeBSD's built-in `fetch` utility and run `install.sh`:
 
 ```sh
-fetch -o - https://github.com<your-username>/<your-repo>/archive/refs/heads/main.tar.gz | tar -xz
+fetch -o - https://github.com/gbdrbob/opnsense-thinkpad-x61s-power/archive/refs/heads/main.tar.gz | tar -xz
 cd <your-repo>-main
 sh install.sh
 ```
